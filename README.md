@@ -16,6 +16,9 @@ SPAではroutingをreactにて行います。
 現在react-study/src/tsx/index.tsxではHelloと表示されているのみなので、
 `/` でLoginコンポーネント, `/todo` でtodoコンポーネントが表示されるように設定してください。
 
+## 完成デモ
+https://i.gyazo.com/a1bc9295905b3aff2ba3e48f887c5bd8.gif
+
 ## 補足
 今回はReact Routerを使用します。React Routerはすでにpackge installされています。
 
