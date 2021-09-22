@@ -147,6 +147,10 @@ https://react-hook-form.com/get-started#Quickstart
 - /todoはログイン状態（つまりtokenが保持されている状態)のみアクセス可能とする。
 - 別APIを叩くなどで認証が必要になったときに初めて期限切れtokenを破棄する。
 
+## 参考文献
+https://redux-toolkit.js.org/
+
+
 ## 難易度
 ★★★☆☆
 
@@ -164,5 +168,26 @@ https://github.com/wiz-creative/template_react/blob/master/src/tsx/index.tsx
 
 </details>
 
+
+# 4.スタイル
+reactではstyleについてのコアシステムを持たず、他ライブラリに委譲することで実装者が自分の好きな手法を選択することができます。（スタイルに限らず、Reactのエコシステム全般に言える設計思想です。）
+Wizでも様々な手法を用いて実装されていますが、一番導入の多いEmotionでの実装を選択します。
+
+事前に用意しているsrc/tsx/views/components/Header.tsxにおいて、
+- ヘッダーのスタイルを整えること（自由にOK）
+- ログイン時は背景色を別の色に変更する（好きな色でOK）
+
+## 補足
+Emotionの環境設定は済んでおり、プラグマ(@jsx)の記述も必要ありません。
+
 ## 参考文献
-https://redux-toolkit.js.org/
+https://emotion.sh/docs/introduction
+
+## 難易度
+★★☆☆☆
+
+<details>
+<summary>ヒント1</summary>
+ログイン状態を取得するには、redux-toolkitのslicesからexportすればOKです。
+https://redux-toolkit.js.org/tutorials/typescript#application-usage
+</details>
