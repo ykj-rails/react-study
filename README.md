@@ -43,9 +43,14 @@ https://reactrouter.com/web/guides/quick-start
 ```
 </details>
 
+## pullRequestを提出しよう！
+1.Routingが完了したらpullRequestを作成し、team-reactで@channelで報告しましょう！
+完了したら次のステップへ！
+
 # 2.フォーム送信
 フォームのstate管理を行います。
-いくつかの方法がありますが、現状Wizで導入数の多いreact-fook-formを使った方法で実装してください。
+いくつかの方法がありますが、現状Wizで導入数の多いreact-hook-formを使った方法で実装してください。
+*react-hook-formはインストール済みです。なので実装に入りましょう。
 作業ファイルは主にreact-study/src/tsx/views/pages/Login.tsxになります。
 
 - ユーザー名(nameはusername)
@@ -59,9 +64,23 @@ https://reactrouter.com/web/guides/quick-start
 postが成功し、200 Statusが返却されればOKです。
 （login処理はこの後の課題で行います）
 
+## goal
+postが成功し、200 Statusを受け取る。
 
 【参考】
 https://react-hook-form.com/get-started#Quickstart
+
+## 完成デモ
+
+### POST成功時
+https://gyazo.com/036a22898cd7e16eaf7a4a629b2fc6ab
+### validation失敗時
+#### usernameない編
+https://gyazo.com/8db2d974c680001820b878e1bbc11bae
+### passwordない編
+https://i.gyazo.com/6e49c3ddd037a7d24a7f1b24493d17c8.gif
+### sever側のvalidation編
+https://gyazo.com/abbb0ea3b1b30849664de76af9ce6d77
 
 ## サーバーについて
 ```
@@ -73,7 +92,7 @@ $ npm run mock
 
 また、レスポンス仕様に関しては下記の通りです。
 ```
-・username admin, password adminで200レスポンス。
+・username: admin, password: adminで200レスポンス。
 ・それ以外は422。
 ・形式は{ status: ステータス番号, data: {token: トークン情報 }}
 ```
@@ -81,10 +100,12 @@ $ npm run mock
 
 <details>
 <summary>ヒント1 バリデーションについて</summary>
- 今回のバリデーションはreact-hook-formの標準機能で賄えます。
+今回のバリデーションはreact-hook-formの標準機能で賄えます。
+
 https://react-hook-form.com/get-started#applyvalidation
 
 今回よりもっと複雑な仕様のバリデーションの場合は、[yup](https://github.com/jquense/yup)などを使うのがおすすめです。
+*標準機能を実装できたら挑戦してみましょう！
 </details>
 
 <details>
