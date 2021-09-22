@@ -19,8 +19,10 @@ $ npm run serve
 
 # 1.routing
 SPAではroutingをreactにて行います。
-現在react-study/src/tsx/index.tsxではHelloと表示されているのみなので、
-`/` でLoginコンポーネント, `/todo` でtodoコンポーネントが表示されるように設定してください。
+現在react-study/src/tsx/index.tsxではHelloと表示されているのみなので、以下の要件を満たすよう実装してください。
+- `/` でLoginコンポーネントが表示される
+- `/todo` でTodoコンポーネントが表示される
+, `/todoconfig` でTodoconfigコンポーネントが表示されるように設定してください。
 ## 難易度
 ★☆☆☆☆
 

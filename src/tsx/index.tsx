@@ -10,25 +10,7 @@ import { TodoConfig } from './views/pages/TodoConfig'
 import { Header } from './views/components/Header'
 
 const App = () => (
-  <Provider store={store}>
-    <div>
-      <Header />
-      <Router>
-        <Switch>
-          <Route path="/todo">
-            <Todo />
-          </Route>
-          <Route path="todoconfig">
-            <TodoConfig />
-          </Route>
-          <Route path="/">
-            <Login />
-          </Route>
-        </Switch>
-      </Router>
-    </div>
-  </Provider>
-
+  <div>Hello</div>
 )
 
 ReactDOM.render(<App/>, document.querySelector('#app'))
