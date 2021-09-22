@@ -11,10 +11,14 @@ const config = {
   entry: "./src/tsx/index.tsx",
   output: {
     path: path.resolve(__dirname, "dist"),
+    publicPath: '/'
   },
   devServer: {
     open: true,
     host: "localhost",
+    historyApiFallback: {
+      rewrites: [{ from: /^\/$/, to: 'index.html' }],
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({

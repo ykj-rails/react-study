@@ -18,3 +18,7 @@ SPAではroutingをreactにて行います。
 
 【参考】
 https://reactrouter.com/web/guides/quick-start
+
+ヒント:
+- 排他的にマッチさせるにはSwitchが必要。
+- Switchは上から順にマッチするか検索する点に注意。
