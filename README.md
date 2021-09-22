@@ -15,15 +15,14 @@ $ npm run serve
 SPAではroutingをreactにて行います。
 現在react-study/src/tsx/index.tsxではHelloと表示されているのみなので、
 `/` でLoginコンポーネント, `/todo` でtodoコンポーネントが表示されるように設定してください。
+## 難易度
+★☆☆☆☆
 
 ## 完成デモ
 https://i.gyazo.com/a1bc9295905b3aff2ba3e48f887c5bd8.gif
 
 ## 補足
 今回はReact Routerを使用します。React Routerはすでにpackge installされています。
-
-【参考】
-https://reactrouter.com/web/guides/quick-start
 
 <details>
 <summary>ヒント1(何したいいかわからない編)</summary>
@@ -42,6 +41,11 @@ https://reactrouter.com/web/guides/quick-start
 ・ Switch以外にも条件一致させることができるので探してみてね
 ```
 </details>
+
+## 参考文献
+実装だけでなくライブラリをある程度理解しておきましょう！
+
+https://reactrouter.com/web/guides/quick-start
 
 ## pullRequestを提出しよう！
 1.Routingが完了したらpullRequestを作成し、team-reactで@channelで報告しましょう！
@@ -64,11 +68,11 @@ https://reactrouter.com/web/guides/quick-start
 postが成功し、200 Statusが返却されればOKです。
 （login処理はこの後の課題で行います）
 
+## 難易度
+★★☆☆☆
+
 ## goal
 postが成功し、200 Statusを受け取る。
-
-【参考】
-https://react-hook-form.com/get-started#Quickstart
 
 ## 完成デモ
 
@@ -124,9 +128,17 @@ https://react-hook-form.com/api/useform/seterror
 
 </details>
 
+## 参考文献
+react-hook-formはかなり使います！チェックしておきましょう！
+またアップデートする時に書き方が割と変化したりするので最新状況も追っておきましょう！
+
+https://react-hook-form.com/get-started#Quickstart
+
 # 3.トークンの管理
 トークンを保持し、トークンが生きている間は他の機密事項にアクセスできるようにします。
+
 こういったアプリ全体で管理するグローバルなStateは、少し管理に工夫が必要です。
+
 色々な方法がありますが、Wizで導入数の一番多いredux-toolkitを使った実装方法を採用します。
 
 下記の仕様で実装してください。
@@ -135,8 +147,8 @@ https://react-hook-form.com/api/useform/seterror
 - /todoはログイン状態（つまりtokenが保持されている状態)のみアクセス可能とする。
 - 別APIを叩くなどで認証が必要になったときに初めて期限切れtokenを破棄する。
 
-【参考】
-https://redux-toolkit.js.org/
+## 難易度
+★★★☆☆
 
 <details>
 <summary>ヒント1</summary>
@@ -151,3 +163,6 @@ template_reactのindex.jsで実際に実装されているので、確認して�
 https://github.com/wiz-creative/template_react/blob/master/src/tsx/index.tsx
 
 </details>
+
+## 参考文献
+https://redux-toolkit.js.org/
