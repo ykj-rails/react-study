@@ -1,5 +1,7 @@
 import * as React from 'react'
 
 export const Todo = () => (
-  <div>Todo画面だよー</div>
+  <div>
+    <h1>Todo画面だよー</h1>
+  </div>
 )

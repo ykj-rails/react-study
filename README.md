@@ -102,3 +102,31 @@ https://react-hook-form.com/api/useform/seterror
 
 
 </details>
+
+# 3.トークンの管理
+トークンを保持し、トークンが生きている間は他の機密事項にアクセスできるようにします。
+こういったアプリ全体で管理するグローバルなStateは、少し管理に工夫が必要です。
+色々な方法がありますが、Wizで導入数の一番多いredux-toolkitを使った実装方法を採用します。
+
+下記の仕様で実装してください。
+- Login直後は /todo にリダイレクトする。
+- Loginが切れたらトップにリダイレクトする。
+- /todoはログイン状態（つまりtokenが保持されている状態)のみアクセス可能とする。
+- 別APIを叩くなどで認証が必要になったときに初めて期限切れtokenを破棄する。
+
+【参考】
+https://redux-toolkit.js.org/
+
+<details>
+<summary>ヒント1</summary>
+sliceの作り方は、GutHubにあるtemplate_reactのコードを参考にしてみてください。
+https://github.com/wiz-creative/template_react/tree/master/src/tsx/stores
+</details>
+
+<details>
+<summary>ヒント2</summary>
+tokenが保持されているかどうかリダイレクトするには、ルーティングのコンポーネントをラッピングして、tokenの確認の機能をつけるという方法をよく取ります。
+template_reactのindex.jsで実際に実装されているので、確認してみてください!
+https://github.com/wiz-creative/template_react/blob/master/src/tsx/index.tsx
+
+</details>
