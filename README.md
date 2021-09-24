@@ -155,12 +155,27 @@ https://react-hook-form.com/get-started#Quickstart
 - /todoはログイン状態（つまりtokenが保持されている状態)のみアクセス可能とする。
 - 別APIを叩くなどで認証が必要になったときに初めて期限切れtokenを破棄する。
 
+## トークン保持について
+今回はプロジェクトよく使われている管理方法として、js-cookieライブラリでトークンをcookieで管理します。
+
+js-cookieはインストールされていますのでそのままお使いください
+
+*cookieで管理することが必ずしもベストプラクティスとは限りません。セッションという単語も聞いたことがあると思います。
+
+今回は`cookie`という認識でいてもらえますと幸いです。実際に案件でtoken管理する際に一度調べてみるといいかもしれません。
+
 ## 参考文献
 https://redux-toolkit.js.org/
 
 
 ## 難易度
 ★★★☆☆
+
+## 完成デモ
+### Login処理 /todoへ　
+https://gyazo.com/760e41bed7ed8dd055e724d17173110c
+### tokenがなかった時/login状態が確認できない時
+https://gyazo.com/0b11f1e6781c8b49afffe1551cb43e1c
 
 <details>
 <summary>ヒント1</summary>
@@ -185,14 +200,19 @@ Wizでも様々な手法を用いて実装されていますが、一番導入�
 - ヘッダーのスタイルを整えること（自由にOK）
 - ログイン時は背景色を別の色に変更する（好きな色でOK）
 
+## 難易度
+★★☆☆☆
+
 ## 補足
 Emotionの環境設定は済んでおり、プラグマ(@jsx)の記述も必要ありません。
 
 ## 参考文献
 https://emotion.sh/docs/introduction
 
-## 難易度
-★★☆☆☆
+## 完成デモ
+### ヘッダー背景（未ログイン:yellow =>  ログイン時:green）
+https://gyazo.com/5a7ad8473d23f275bfd1f3c76de21d0b
+
 
 <details>
 <summary>ヒント1</summary>
