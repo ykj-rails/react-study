@@ -209,6 +209,10 @@ Emotionの環境設定は済んでおり、プラグマ(@jsx)の記述も必要�
 ## 参考文献
 https://emotion.sh/docs/introduction
 
+## 完成デモ
+### ヘッダー背景（未ログイン:yellow =>  ログイン時:green）
+https://gyazo.com/5a7ad8473d23f275bfd1f3c76de21d0b
+
 
 <details>
 <summary>ヒント1</summary>
