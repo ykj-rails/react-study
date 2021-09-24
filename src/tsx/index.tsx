@@ -10,7 +10,10 @@ import { TodoConfig } from './views/pages/TodoConfig'
 import { Header } from './views/components/Header'
 
 const App = () => (
-  <div>Hello</div>
+  
+  <Provider store={store}>
+    <Header/>
+  </Provider>
 )
 
 ReactDOM.render(<App/>, document.querySelector('#app'))

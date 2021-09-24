@@ -7,7 +7,7 @@ Wiz関係の案件にすぐ取り組めるよう、よく使うライブラリ�
 ・wizで使われているReact周りのライブラリの何を勉強すればいいかわからない
 
 課題を進めながらレビュワーにプルリクを送りましょう。
-（プルリクの粒度は状況に応じて自由に設定してください。）
+（プルリクの粒度は状況に応じてレビュワーと相談しつつ自由に設定してください。）
 
 ```
 $ npm ci
@@ -18,8 +18,9 @@ $ npm run serve
 
 
 # 1.routing
-SPAではroutingをreactにて行います。
-現在react-study/src/tsx/index.tsxではHelloと表示されているのみなので、以下の要件を満たすよう実装してください。
+SPAではroutingをReactにて行います。
+現在react-study/src/tsx/index.tsxではHeaderが表示されているのみなので、以下の要件を満たすよう実装してください。
+- どのURLでもHeaderが表示されるようにする
 - `/` でLoginコンポーネントが表示される
 - `/todo` でTodoコンポーネントが表示される
 , `/todoconfig` でTodoconfigコンポーネントが表示されるように設定してください。
@@ -153,6 +154,7 @@ https://react-hook-form.com/get-started#Quickstart
 - Login直後は /todo にリダイレクトする。
 - Loginが切れたらトップにリダイレクトする。
 - /todoはログイン状態（つまりtokenが保持されている状態)のみアクセス可能とする。
+- tokenはreduxではなくCookieにて管理する。（再訪問時もログインが生きるようにするため）
 - 別APIを叩くなどで認証が必要になったときに初めて期限切れtokenを破棄する。
 
 ## トークン保持について
