@@ -11,33 +11,48 @@ type FormInputs = {
   server: string
 }
 export const Login = () => {
-  const { register, setError, formState: { errors }, handleSubmit } = useForm<FormInputs>();
+  const {
+    register,
+    setError,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<FormInputs>()
 
-  const onSubmit = async(data:any) => {
+  const onSubmit = async (data: any) => {
     const res = await fetch('http://localhost:3000/login', {
       method: 'POST',
       mode: 'cors',
       body: JSON.stringify(data),
       headers: {
-        "Content-Type": 'application/json'
-      }
+        'Content-Type': 'application/json',
+      },
     })
     const json = await res.json()
 
-    if(json.status !== 200) {
-      setError('server', {type: 'server',message: 'サーバーエラーです。'})
+    if (json.status !== 200) {
+      setError('server', { type: 'server', message: 'サーバーエラーです。' })
     }
+    alert('ステータス200!!')
   }
 
-  return(
+  return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Input regist={register('username', { required: 'usernameは必須です'})} />
-      <ErrorMessage errors={errors} name="username"/>
-      <Input regist={register('password', { required: 'passwordは必須です' })} />
-      <ErrorMessage errors={errors} name="password"/>
-      <ErrorMessage errors={errors} name="server"/>
+      <Input
+        regist={register('username', { required: 'usernameは必須です' })}
+      />
+      <ErrorMessage errors={errors} name="username" />
+      <Input
+        regist={register('password', {
+          required: 'passwordは必須です',
+          minLength: {
+            value: 5,
+            message: 'passwordは5文字以上で入力してください',
+          },
+        })}
+      />
+      <ErrorMessage errors={errors} name="password" />
+      <ErrorMessage errors={errors} name="server" />
       <Submit />
     </form>
-    
   )
 }
