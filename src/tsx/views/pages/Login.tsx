@@ -4,6 +4,7 @@ import { ErrorMessage } from '@hookform/error-message'
 
 import { Input } from '../components/Input'
 import { Submit } from '../components/Submit'
+import { useHistory } from 'react-router-dom'
 
 type FormInputs = {
   username: string
@@ -18,6 +19,8 @@ export const Login = () => {
     handleSubmit,
   } = useForm<FormInputs>()
 
+  let history = useHistory()
+
   const onSubmit = async (data: any) => {
     const res = await fetch('http://localhost:3000/login', {
       method: 'POST',
@@ -28,11 +31,13 @@ export const Login = () => {
       },
     })
     const json = await res.json()
-
-    if (json.status !== 200) {
-      setError('server', { type: 'server', message: 'サーバーエラーです。' })
+    if (json.status === 200) {
+      console.log('200OK!')
+      history.push('/todo')
+      // return <Redirect push to="/todo" />
+    } else {
+      setError('server', { type: 'server', message: `${json.error}` })
     }
-    alert('ステータス200!!')
   }
 
   return (

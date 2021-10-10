@@ -1,6 +1,12 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { Switch, Route, Link, BrowserRouter as Router } from 'react-router-dom'
+import {
+  Switch,
+  Route,
+  Link,
+  Redirect,
+  BrowserRouter as Router,
+} from 'react-router-dom'
 import { Provider } from 'react-redux'
 
 import { store } from '../ts/stores'
@@ -25,14 +31,14 @@ const App = () => (
         </li>
       </ul>
       <Switch>
-        <Route path="/todo">
-          <Todo />
-        </Route>
-        <Route path="/todoconfig">
-          <TodoConfig />
-        </Route>
-        <Route path="/">
+        <Route exact path="/">
           <Login />
+        </Route>
+        <Route exact path="/todo">
+          {true ? <Todo /> : <Redirect to="/" />}
+        </Route>
+        <Route exact path="/todoconfig">
+          <TodoConfig />
         </Route>
       </Switch>
     </Router>
