@@ -34,7 +34,7 @@ export const Login = () => {
     if (json.status === 200) {
       console.log('200OK!')
       history.push('/todo')
-      // return <Redirect push to="/todo" />
+      // return <Redirect push to="/todo" /> TODO: これだといけなかった
     } else {
       setError('server', { type: 'server', message: `${json.error}` })
     }
