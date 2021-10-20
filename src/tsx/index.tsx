@@ -23,9 +23,12 @@ const App = () => (
         <li>
           <Link to="/">Login</Link>
         </li>
-        <li>
-          <Link to="/todo">Todo</Link>
-        </li>
+        {false && (
+          <li>
+            <Link to="/todo">Todo</Link>
+          </li>
+        )}
+
         <li>
           <Link to="/todoconfig">Todoconfig</Link>
         </li>
@@ -35,7 +38,7 @@ const App = () => (
           <Login />
         </Route>
         <Route exact path="/todo">
-          {true ? <Todo /> : <Redirect to="/" />}
+          {false ? <Todo /> : <Redirect to="/" />}
         </Route>
         <Route exact path="/todoconfig">
           <TodoConfig />

@@ -13,22 +13,20 @@ const PORT = process.env.PORT || 3000
 
 app.post('/login', (req, res) => {
   const data = req.body
-  if(
-    data.username !== 'admin' || 
-    data.password !== 'admin'
-  ) {
+  if (data.username !== 'admin' || data.password !== 'admin') {
     return res.status(422).send({
       status: 422,
-      error: 'Invalid username/password'
+      error: 'Invalid username/password',
     })
   }
 
   // jwtトークン発行
   const token = jwt.sign(data, SECRET_KEY)
+  console.log(token)
 
   return res.json({
-    'status': 200,
-    'data': {token}
+    status: 200,
+    data: { token },
   })
 })
 

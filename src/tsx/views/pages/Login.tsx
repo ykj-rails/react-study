@@ -1,10 +1,11 @@
 import * as React from 'react'
+import { useHistory } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { ErrorMessage } from '@hookform/error-message'
+import Cookies from 'js-cookie'
 
 import { Input } from '../components/Input'
 import { Submit } from '../components/Submit'
-import { useHistory } from 'react-router-dom'
 
 type FormInputs = {
   username: string
@@ -32,14 +33,12 @@ export const Login = () => {
     })
     const json = await res.json()
     if (json.status === 200) {
-      console.log('200OK!')
+      Cookies.set('token', json.data.token)
       history.push('/todo')
-      // return <Redirect push to="/todo" /> TODO: これだといけなかった
     } else {
       setError('server', { type: 'server', message: `${json.error}` })
     }
   }
-
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Input
