@@ -1,9 +1,7 @@
 import * as React from 'react'
-import { useHistory } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { ErrorMessage } from '@hookform/error-message'
-import Cookies from 'js-cookie'
-
 import { Input } from '../components/Input'
 import { Submit } from '../components/Submit'
 
@@ -13,6 +11,7 @@ type FormInputs = {
   server: string
 }
 export const Login = () => {
+  const dispatch = useDispatch()
   const {
     register,
     setError,
@@ -20,25 +19,10 @@ export const Login = () => {
     handleSubmit,
   } = useForm<FormInputs>()
 
-  let history = useHistory()
-
   const onSubmit = async (data: any) => {
-    const res = await fetch('http://localhost:3000/login', {
-      method: 'POST',
-      mode: 'cors',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    const json = await res.json()
-    if (json.status === 200) {
-      Cookies.set('token', json.data.token)
-      history.push('/todo')
-    } else {
-      setError('server', { type: 'server', message: `${json.error}` })
-    }
+    await dispatch()
   }
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Input

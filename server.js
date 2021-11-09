@@ -11,6 +11,19 @@ app.use(express.json())
 const SECRET_KEY = 'SHHH!'
 const PORT = process.env.PORT || 3000
 
+// お遊びで書いてみただけ
+app.get('/user', (req, res) => {
+  return res.json({
+    status: 200,
+    data: [
+      {
+        name: 'yukiji',
+        age: 32,
+      },
+    ],
+  })
+})
+
 app.post('/login', (req, res) => {
   const data = req.body
   if (data.username !== 'admin' || data.password !== 'admin') {
