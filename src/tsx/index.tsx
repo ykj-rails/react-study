@@ -1,25 +1,33 @@
 import React, { useEffect } from 'react'
-import * as ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom'
 import {
   Switch,
   Route,
-  Link,
   Redirect,
   BrowserRouter as Router,
 } from 'react-router-dom'
 import { Provider, useSelector, useDispatch } from 'react-redux'
-import Cookies from 'js-cookie'
 import { selectIsLogin, loginCheck } from '../ts/stores/slices/loginSlice'
 import { store } from '../ts/stores'
+import { Header } from './views/components/Header'
+import { Nav } from './views/components/Nav'
 import { Login } from './views/pages/Login'
 import { Todo } from './views/pages/Todo'
 import { TodoConfig } from './views/pages/TodoConfig'
-import { Header } from './views/components/Header'
+import Cookies from 'js-cookie'
 
 const App = () => {
   const dispatch = useDispatch()
   const token = Cookies.get('token')
   const isLogin = useSelector(selectIsLogin)
+
+  const PrivateRoute = (props: any) => {
+    if (isLogin) {
+      return <Route {...props} />
+    } else {
+      return <Redirect to="/" />
+    }
+  }
 
   useEffect(() => {
     dispatch(loginCheck(token))
@@ -28,26 +36,11 @@ const App = () => {
   return (
     <Router>
       <Header />
-      <ul>
-        <li>
-          <Link to="/">Login</Link>
-        </li>
-        {isLogin && (
-          <li>
-            <Link to="/todo">Todo</Link>
-          </li>
-        )}
-
-        <li>
-          <Link to="/todoconfig">Todoconfig</Link>
-        </li>
-      </ul>
+      <Nav />
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/todoconfig" component={TodoConfig} />
-        <Route exact path="/todo">
-          {isLogin ? <Todo /> : <Redirect to="/" />}
-        </Route>
+        <PrivateRoute exact path="/todo" component={Todo} />
       </Switch>
     </Router>
   )
@@ -62,10 +55,8 @@ ReactDOM.render(
 
 // done.
 // Login直後は /todo にリダイレクトする。
-
-// logoutコンポーネント作成
-// リンクリストコンポーネント化する
-// Loginが切れたらトップにリダイレクトする。
 // /todoはログイン状態（つまりtokenが保持されている状態)のみアクセス可能とする。
 // tokenはreduxではなくCookieにて管理する。（再訪問時もログインが生きるようにするため）
-// 別APIを叩くなどで認証が必要になったときに初めて期限切れtokenを破棄する。
+// Loginが切れたらトップにリダイレクトする。
+// logoutコンポーネント作成
+// リンクリストコンポーネント化する
