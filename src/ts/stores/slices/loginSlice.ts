@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import type { RootState } from '../index'
-import Cookies from 'js-cookie'
 
 const apiUrl = 'http://localhost:3000/'
 
@@ -32,14 +31,13 @@ const loginSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchAsyncLogin.pending, (state, action) => {
-      console.log('ペンディングなう')
+      console.log('pendingなう')
     })
     builder.addCase(fetchAsyncLogin.fulfilled, (state, action) => {
       state.isLogin = true
-      Cookies.set('token', action.payload.data.token)
     })
     builder.addCase(fetchAsyncLogin.rejected, (state, action) => {
-      // setError('server', { type: 'server', message: `${json.error}` })
+      console.log('rejectなう')
     })
   },
 })

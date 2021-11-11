@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import { ErrorMessage } from '@hookform/error-message'
 import { Input } from '../components/Input'
 import { Submit } from '../components/Submit'
+import Cookies from 'js-cookie'
 
 type FormInputs = {
   username: string
@@ -25,7 +26,12 @@ export const Login = () => {
 
   const onSubmit = async (data: any) => {
     const res: any = await dispatch(fetchAsyncLogin(data))
-    if (res.payload.status === 200) history.push('/todo')
+    if (res.payload.status === 200) {
+      Cookies.set('token', res.payload.data.token)
+      history.push('/todo')
+    } else {
+      setError('server', { type: 'server', message: `${res.payload.error}` })
+    }
   }
 
   return (
