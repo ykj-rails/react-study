@@ -35,7 +35,6 @@ app.post('/login', (req, res) => {
 
   // jwtトークン発行
   const token = jwt.sign(data, SECRET_KEY)
-  console.log(token)
 
   return res.json({
     status: 200,

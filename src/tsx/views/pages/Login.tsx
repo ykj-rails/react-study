@@ -1,5 +1,7 @@
 import * as React from 'react'
+import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
+import { fetchAsyncLogin } from '../../../ts/stores/slices/loginSlice'
 import { useForm } from 'react-hook-form'
 import { ErrorMessage } from '@hookform/error-message'
 import { Input } from '../components/Input'
@@ -12,6 +14,8 @@ type FormInputs = {
 }
 export const Login = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
+
   const {
     register,
     setError,
@@ -20,7 +24,8 @@ export const Login = () => {
   } = useForm<FormInputs>()
 
   const onSubmit = async (data: any) => {
-    await dispatch()
+    const res: any = await dispatch(fetchAsyncLogin(data))
+    if (res.payload.status === 200) history.push('/todo')
   }
 
   return (
