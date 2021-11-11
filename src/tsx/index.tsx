@@ -36,7 +36,6 @@ const App = () => {
   return (
     <Router>
       <Header />
-      <Nav />
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/todoconfig" component={TodoConfig} />
@@ -52,11 +51,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('app'),
 )
-
-// done.
-// Login直後は /todo にリダイレクトする。
-// /todoはログイン状態（つまりtokenが保持されている状態)のみアクセス可能とする。
-// tokenはreduxではなくCookieにて管理する。（再訪問時もログインが生きるようにするため）
-// Loginが切れたらトップにリダイレクトする。
-// logoutコンポーネント作成
-// リンクリストコンポーネント化する
