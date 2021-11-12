@@ -42,4 +42,29 @@ app.post('/login', (req, res) => {
   })
 })
 
+// token認証用api作ったお
+app.post('/auth', (req, res) => {
+  const authHeader = req.headers['authorization']
+  // headersにauthorizationがセットされているかチェック
+  if (authHeader === undefined)
+    return res.json({ error: 'ヘッダーエラーだよー' })
+  //Bearerが正しく定義されているか
+  if (authHeader.split(' ')[0] !== 'Bearer')
+    return res.json({ error: 'ヘッダーのフォーマットエラーだよー' })
+  try {
+    const token = jwt.verify(authHeader.split(' ')[1], SECRET_KEY)
+    // username token チェック
+    if (token.username === 'admin' && token.password === 'admin') {
+      return res.json({
+        status: 200,
+      })
+    } else {
+      res.json({ error: '認証エラーだよー' })
+    }
+  } catch (e) {
+    //tokenエラー
+    res.json({ error: e.message })
+  }
+})
+
 app.listen(PORT, () => console.log(`server started! listen: ${PORT}`))
