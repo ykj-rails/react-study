@@ -32,11 +32,9 @@ const App = () => {
 
   useEffect(() => {
     const fetchAuth = async (token: any) => {
-      const res: any = await dispatch(fetchAsyncAuth(token))
-      console.log(res.payload.status)
+      await dispatch(fetchAsyncAuth(token))
     }
     fetchAuth(token)
-    // if (res.payload.status !== 200) history.push('/')
   }, [dispatch])
 
   return (
@@ -57,11 +55,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('app'),
 )
-
-// done.
-// cookie内のtokenを確認(課題3で実装している)
-// tokenがあった場合、/auth apiを実行する処理を書いてください。
-// token有効であった場合 status 200が返ってくるので、ログインしている状態にしてください。
-
-// TODO:
-// tokenが有効でない場合　エラーが返ってきます。その場合はログイン画面へ
