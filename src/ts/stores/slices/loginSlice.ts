@@ -19,16 +19,28 @@ export const fetchAsyncLogin = createAsyncThunk(
   },
 )
 
+export const fetchAsyncAuth = createAsyncThunk(
+  'auth/post',
+  async (token: any) => {
+    const res = await fetch(`${apiUrl}auth`, {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    })
+    const data = await res.json()
+    return data
+  },
+)
+
 const loginSlice = createSlice({
   name: 'login',
   initialState: {
     isLogin: false,
   },
-  reducers: {
-    loginCheck(state, action) {
-      if (action.payload) state.isLogin = true
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchAsyncLogin.pending, (state, action) => {
       console.log('pendingなう')
@@ -39,11 +51,17 @@ const loginSlice = createSlice({
     builder.addCase(fetchAsyncLogin.rejected, (state, action) => {
       console.log('rejectなう')
     })
+    builder.addCase(fetchAsyncAuth.fulfilled, (state, action) => {
+      if (action.payload.status === 200) state.isLogin = true
+    })
+    builder.addCase(fetchAsyncAuth.rejected, (state, action) => {
+      console.log('rejectなう')
+    })
   },
 })
 
 // actionをexport
-export const { loginCheck } = loginSlice.actions
+export const {} = loginSlice.actions
 
 export const selectIsLogin = (state: any) => state.login.isLogin
 // reducerをexport → storeへ

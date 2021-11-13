@@ -4,13 +4,13 @@ import {
   Switch,
   Route,
   Redirect,
+  useHistory,
   BrowserRouter as Router,
 } from 'react-router-dom'
 import { Provider, useSelector, useDispatch } from 'react-redux'
-import { selectIsLogin, loginCheck } from '../ts/stores/slices/loginSlice'
+import { selectIsLogin, fetchAsyncAuth } from '../ts/stores/slices/loginSlice'
 import { store } from '../ts/stores'
 import { Header } from './views/components/Header'
-import { Nav } from './views/components/Nav'
 import { Login } from './views/pages/Login'
 import { Todo } from './views/pages/Todo'
 import { TodoConfig } from './views/pages/TodoConfig'
@@ -18,6 +18,7 @@ import Cookies from 'js-cookie'
 
 const App = () => {
   const dispatch = useDispatch()
+  const history = useHistory()
   const token = Cookies.get('token')
   const isLogin = useSelector(selectIsLogin)
 
@@ -30,7 +31,12 @@ const App = () => {
   }
 
   useEffect(() => {
-    dispatch(loginCheck(token))
+    const fetchAuth = async (token: any) => {
+      const res: any = await dispatch(fetchAsyncAuth(token))
+      console.log(res.payload.status)
+    }
+    fetchAuth(token)
+    // if (res.payload.status !== 200) history.push('/')
   }, [dispatch])
 
   return (
@@ -51,3 +57,11 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('app'),
 )
+
+// done.
+// cookie内のtokenを確認(課題3で実装している)
+// tokenがあった場合、/auth apiを実行する処理を書いてください。
+// token有効であった場合 status 200が返ってくるので、ログインしている状態にしてください。
+
+// TODO:
+// tokenが有効でない場合　エラーが返ってきます。その場合はログイン画面へ
