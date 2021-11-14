@@ -4,6 +4,9 @@ import { useSelector } from 'react-redux'
 import { selectIsLogin } from '../../../ts/stores/slices/loginSlice'
 import { Nav } from './Nav'
 
+// TODO: typeの命名が引数と同じでも問題ないか？
+type headerBgColor = '#ccc' | 'yellow'
+
 export const Header = () => {
   const isLogin = useSelector(selectIsLogin)
   const headerBgColor = isLogin ? '#ccc' : 'yellow'
@@ -16,7 +19,7 @@ export const Header = () => {
   )
 }
 
-const headerCss = (headerBgColor: any) =>
+const headerCss = (headerBgColor: headerBgColor) =>
   css`
     height: 60px;
     background: ${headerBgColor};
