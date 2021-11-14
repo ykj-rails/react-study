@@ -7,7 +7,7 @@ import { Nav } from './Nav'
 export const Header = () => {
   const isLogin = useSelector(selectIsLogin)
   const headerBgColor = isLogin ? '#ccc' : 'yellow'
-  // TODO: フラグメントにしたらエラーになった
+
   return (
     <header css={headerCss(headerBgColor)}>
       <h1>ヘッダーです</h1>
