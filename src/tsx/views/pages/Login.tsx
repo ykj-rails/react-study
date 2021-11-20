@@ -1,7 +1,10 @@
 import * as React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchAsyncLogin } from '../../../ts/stores/slices/loginSlice'
+import {
+  fetchAsyncLogin,
+  loadingComplete,
+} from '../../../ts/stores/slices/loginSlice'
 import { useForm } from 'react-hook-form'
 import { ErrorMessage } from '@hookform/error-message'
 import { Input } from '../components/Input'
@@ -30,6 +33,9 @@ export const Login = () => {
       Cookies.set('token', res.payload.data.token)
       history.push('/todo')
     } else {
+      console.log(res.payload.error)
+      // TODO: setErrorのメッセージが消えるので、先にloading状態を解除
+      dispatch(loadingComplete)
       setError('server', { type: 'server', message: `${res.payload.error}` })
     }
   }

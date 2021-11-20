@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
-export const Loading = () => {
-  return (
+type Props = {
+  isLoading: boolean
+  children: ReactNode
+}
+
+export const Loading = ({ children, isLoading }: Props) => {
+  return isLoading ? (
     <div>
       <p>Loading</p>
     </div>
+  ) : (
+    <div>{children}</div>
   )
 }

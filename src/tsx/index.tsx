@@ -35,28 +35,24 @@ const App = () => {
   }
 
   useEffect(() => {
-    const fetchAuth = async (token: any) => {
+    const fetchAuth = async (token: string) => {
       await dispatch(fetchAsyncAuth(token))
     }
     fetchAuth(token)
   }, [dispatch])
 
-  {
-    if (isLoading) {
-      return <Loading />
-    } else {
-      return (
-        <Router>
-          <Header />
-          <Switch>
-            <Route exact path="/" component={Login} />
-            <Route exact path="/todoconfig" component={TodoConfig} />
-            <PrivateRoute exact path="/todo" component={Todo} />
-          </Switch>
-        </Router>
-      )
-    }
-  }
+  return (
+    <Loading isLoading={isLoading}>
+      <Router>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route exact path="/todoconfig" component={TodoConfig} />
+          <PrivateRoute exact path="/todo" component={Todo} />
+        </Switch>
+      </Router>
+    </Loading>
+  )
 }
 
 ReactDOM.render(

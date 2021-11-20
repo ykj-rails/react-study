@@ -21,7 +21,7 @@ export const fetchAsyncLogin = createAsyncThunk(
 
 export const fetchAsyncAuth = createAsyncThunk(
   'auth/post',
-  async (token: any) => {
+  async (token: string) => {
     const res = await fetch(`${apiUrl}auth`, {
       method: 'POST',
       mode: 'cors',
@@ -41,14 +41,24 @@ const loginSlice = createSlice({
     isLogin: false,
     isLoading: false,
   },
-  reducers: {},
+  reducers: {
+    // TODO: サーバーエラーのバリデーションが返ってくる前にLoadingをfalseにしたい（再レンダリングされてエラーメッセージ消える）
+    loadingComplete(state, action) {
+      state.isLoading = false
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchAsyncLogin.pending, (state, action) => {
-      state.isLoading = true
+      // TODO: Loadingが動いてsetErrorのメッセージが消える
+      // state.isLoading = true
     })
     builder.addCase(fetchAsyncLogin.fulfilled, (state, action) => {
-      state.isLoading = false
-      state.isLogin = true
+      // state.isLoading = false
+      // TODO: 200の時はLoading解除。
+      if (action.payload.status === 200) {
+        state.isLoading = false
+        state.isLogin = true
+      }
     })
     builder.addCase(fetchAsyncLogin.rejected, (state, action) => {
       console.log('rejectなう')
@@ -67,7 +77,7 @@ const loginSlice = createSlice({
 })
 
 // actionをexport
-export const {} = loginSlice.actions
+export const { loadingComplete } = loginSlice.actions
 
 export const selectIsLogin = (state: any) => state.login.isLogin
 export const selectIsLoading = (state: any) => state.login.isLoading
