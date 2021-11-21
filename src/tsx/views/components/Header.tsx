@@ -2,7 +2,8 @@ import React from 'react'
 import { css } from '@emotion/react'
 import { useSelector } from 'react-redux'
 import { selectIsLogin } from '../../../ts/stores/slices/loginSlice'
-import { Nav } from './Nav'
+import { NavList } from './NavList'
+import { Logout } from './Logout'
 
 // TODO: typeの命名が引数と同じでも問題ないか？
 type headerBgColor = '#ccc' | 'yellow'
@@ -14,7 +15,8 @@ export const Header = () => {
   return (
     <header css={headerCss(headerBgColor)}>
       <h1>ヘッダーです</h1>
-      <Nav />
+      <NavList />
+      {isLogin && <Logout />}
     </header>
   )
 }
