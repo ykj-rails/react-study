@@ -5,7 +5,6 @@ import { selectIsLogin } from '../../../ts/stores/slices/loginSlice'
 import { NavList } from './NavList'
 import { Logout } from './Logout'
 
-// TODO: typeの命名が引数と同じでも問題ないか？
 type headerBgColor = '#ccc' | 'yellow'
 
 export const Header = () => {

@@ -61,3 +61,6 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('app'),
 )
+
+// TODO:メモ
+// 一回サーバーエラーさせて、正しいID、PASSを入力すると送信ボタンを押しても反応しない。調査中。
