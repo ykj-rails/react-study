@@ -11,6 +11,6 @@ export const Loading = ({ children, isLoading }: Props) => {
       <p>Loading</p>
     </div>
   ) : (
-    <div>{children}</div>
+    <React.Fragment>{children}</React.Fragment>
   )
 }

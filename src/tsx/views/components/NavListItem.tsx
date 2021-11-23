@@ -7,13 +7,10 @@ type Props = {
 }
 
 export const NavListItem = ({ link, linkText }: Props) => {
-  // TODO: Fragmentつかいてぇぇぇ
   return (
-    <div>
-      <li css={navLi}>
-        <Link to={link}>{linkText}</Link>
-      </li>
-    </div>
+    <li css={navLi}>
+      <Link to={link}>{linkText}</Link>
+    </li>
   )
 }
 
