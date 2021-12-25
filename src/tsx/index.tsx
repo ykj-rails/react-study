@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect } from 'react'
+import React, { useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import {
   Switch,
@@ -65,3 +65,5 @@ ReactDOM.render(
 // TODO:メモ
 // 一回サーバーエラーさせて、正しいID、PASSを入力すると送信ボタンを押しても反応しない。調査中。
 // emotionで<>使いたい時
+// getCookieでエラーは出てない
+// hot-roderとは？
