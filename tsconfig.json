@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "noImplicitAny": true,
+    "allowSyntheticDefaultImports": true, //ok
+    "noImplicitAny": true, // ok
     "module": "es6",
     "target": "es5",
     "jsx": "preserve",
     "jsxImportSource": "@emotion/react",
-    "allowJs": true,
+    "allowJs": true, // ok
     "moduleResolution": "node",
     "lib": [
         "ES2020",
